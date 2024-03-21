@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/errors', function () {
+    return view('component.errors');
+});
 
 
-Route::get('/', [AuthController::class, 'login']);
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/dokter', [DoktorController::class, 'index']);
+Route::get('/', [AuthController::class, 'index'])->middleware('isUser');
+Route::post('/', [AuthController::class, 'login'])->middleware('isUser');
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware('isLogin', 'AdminRole');
+Route::get('/dokter', [DoktorController::class, 'index'])->middleware('isLogin', 'DokterRole');
