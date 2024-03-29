@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
-
+            <img src="{{asset('img/icon.png')}}" alt="" style="height: 50px; width:50px;">
         </div>
         <div class="sidebar-brand-text mx-3">Griya Khitam Zaza</div>
     </a>
@@ -39,7 +39,7 @@
     @if (Auth::user()->role_id == '1')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/admin/data-pasien">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Pendaftaran</span></a>
     </li>
@@ -52,6 +52,15 @@
     @endif
 
 
+    @if (Auth::user()->role_id == 1)
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Riwayat</span></a>
+    </li>
+
+    @endif
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item active">

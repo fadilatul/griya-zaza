@@ -10,4 +10,11 @@ class AdminController extends Controller
     {
         return view('pages.admin.index');
     }
+
+    public function data_pasien()
+    {
+        return view('pages.admin.data-pasien');
+    }
+
+    
 }

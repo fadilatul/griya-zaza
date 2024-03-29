@@ -19,10 +19,9 @@
 </head>
 
 <body id="page-top">
-
+    
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         @include('includes.sidebar')
         <!-- End of Sidebar -->
@@ -32,6 +31,7 @@
 
             <!-- Main Content -->
             <div id="content">
+
 
                 <!-- Topbar -->
                 @include('includes.header')

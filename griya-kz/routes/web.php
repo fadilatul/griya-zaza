@@ -21,9 +21,16 @@ Route::get('/errors', function () {
 });
 
 
+// ***********************AUTH******************************
 Route::get('/', [AuthController::class, 'index'])->middleware('isUser');
 Route::post('/', [AuthController::class, 'login'])->middleware('isUser');
 Route::get('/logout', [AuthController::class, 'logout']);
 
+
+// *****************Admin**********************************
 Route::get('/admin', [AdminController::class, 'index'])->middleware('isLogin', 'AdminRole');
+Route::get('/admin/data-pasien', [AdminController::class, 'data_pasien'])->middleware('isLogin', 'AdminRole');
+
+
+//*****************Dokter********************************** */
 Route::get('/dokter', [DoktorController::class, 'index'])->middleware('isLogin', 'DokterRole');

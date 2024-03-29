@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Halaman Utama
+Halaman Admin
 @endsection
 
 @section('content')
