@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pemeriksaan', function (Blueprint $table) {
+        Schema::create('diagnosa', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pasien_id');
-            $table->string('anamnesa');
-            $table->string('diagnosa');
-            $table->string('terapi');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('pasien_id')->references('id')->on('pendaftaran')->onDelete('cascade');
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pemeriksaan');
+        Schema::dropIfExists('diagnosa');
     }
 };

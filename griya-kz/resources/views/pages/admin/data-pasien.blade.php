@@ -17,7 +17,8 @@
      <!-- DataTales Example -->
      <div class="card shadow mb-4">
          <div class="card-body">
-             <button type="button" class="btn btn-primary mb-4">+ Tambah Data</button>
+             <a href="/admin/tambah-pasien"><button type="button" class="btn btn-primary mb-4">+ Tambah Data</button></a>
+
              <div class="table-responsive">
                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                      <thead>
@@ -36,18 +37,20 @@
                      </thead>
 
                      <tbody>
+                         @foreach ($data as $item)
                          <tr>
-                             <td>1</td>
-                             <td>System Architect</td>
-                             <td>23 agustus 2002</td>
-                             <td>61</td>
-                             <td>brobat</td>
-                             <td>Banyuwangi</td>
-                             <td>09978675654</td>
-                             <td>Umum</td>
+                             <td>{{$loop->iteration}}</td>
+                             <td>{{$item->name}}</td>
+                             <td>{{$item->tanggal_lahir}}</td>
+                             <td>{{$item->usia}} Th</td>
+                             <td>{{$item->keterangan}}</td>
+                             <td>{{$item->alamat}}</td>
+                             <td>{{$item->nomer_hp}}</td>
+                             <td>{{$item->kategori}}</td>
                              <td>f</td>
                              <td>b</td>
                          </tr>
+                         @endforeach
                      </tbody>
                  </table>
              </div>

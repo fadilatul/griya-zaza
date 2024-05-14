@@ -30,6 +30,8 @@ Route::get('/logout', [AuthController::class, 'logout']);
 // *****************Admin**********************************
 Route::get('/admin', [AdminController::class, 'index'])->middleware('isLogin', 'AdminRole');
 Route::get('/admin/data-pasien', [AdminController::class, 'data_pasien'])->middleware('isLogin', 'AdminRole');
+Route::get('/admin/tambah-pasien', [AdminController::class, 'tambah_pasien']);
+Route::post('/admin/tambah-pasien', [AdminController::class, 'add_pasien']);
 
 
 //*****************Dokter********************************** */

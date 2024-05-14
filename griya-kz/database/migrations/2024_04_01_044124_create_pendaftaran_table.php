@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_masuk');
             $table->string('name');
-            $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->enum('jenis_kelamin', ['laki-laki', 'prempuan']);
-            $table->integer('nomer_hp');
+            $table->integer('usia');
+            $table->enum('keterangan', ['belumkawin', 'kawin']);
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('nomer_hp')->nullable();
             $table->string('alamat');
-            $table->enum('status', ['berobat', 'priksa']);
-            $table->unsignedBigInteger('poli_id');
+            $table->enum('kategori', ['umum', 'bpjs']);
+            $table->unsignedBigInteger('khitan_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('poli_id')->references('id')->on('poli')->onDelete('cascade');
+            $table->foreign('khitan_id')->references('id')->on('khitan')->onDelete('cascade');
         });
     }
 
