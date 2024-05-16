@@ -47,7 +47,9 @@
                              <td>{{$item->alamat}}</td>
                              <td>{{$item->nomer_hp}}</td>
                              <td>{{$item->kategori}}</td>
-                             <td>f</td>
+                             <td>
+                                 <a href="{{ route('rekam-medis', ['id' => $item->id]) }}"><button>Icon</button></a>
+                             </td>
                              <td>b</td>
                          </tr>
                          @endforeach

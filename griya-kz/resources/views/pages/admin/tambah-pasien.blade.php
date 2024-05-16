@@ -17,12 +17,12 @@ Tambah Data Pasien
                     </div>
                     <div class="form-group">
                         <label for="inputTanggalLahir">Tanggal Lahir</label>
-                        <input id="inputTanggalLahir" name="tanggal_lahir" type="date" class="form-control rounded-pill">
+                        <input type="date" id="birthdate" class="form-control rounded-pill" name="tanggal_lahir" onchange="calculateAge()">
                     </div>
 
                     <div class="form-group">
                         <label for="inputUsia">Usia</label>
-                        <input id="inputUsia" name="usia" type="number" class="form-control rounded-pill">
+                        <input id="age" name="usia" type="number" class="form-control rounded-pill">
                     </div>
                     <div class="form-group">
                         <label for="inputKeterangan">Keterangan</label>
@@ -71,3 +71,24 @@ Tambah Data Pasien
 </div>
 
 @endsection
+
+@push('prepend-script')
+<script>
+    function calculateAge() {
+        var birthdate = document.getElementById("birthdate").value;
+        if (birthdate === "") return; // Jangan lakukan apa-apa jika input kosong
+
+        var birthDate = new Date(birthdate);
+        var today = new Date();
+
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDifference = today.getMonth() - birthDate.getMonth();
+
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        document.getElementById("age").value = age;
+    }
+</script>
+@endpush

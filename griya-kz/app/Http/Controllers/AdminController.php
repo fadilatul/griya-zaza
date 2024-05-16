@@ -14,8 +14,9 @@ class AdminController extends Controller
         return view('pages.admin.index');
     }
 
-    public function data_pasien()
+    public function data_pasien(Request $request)
     {
+
         $data = Pendaftaran::orderBy('created_at', 'DESC')->get();
         return view('pages.admin.data-pasien', compact('data'));
     }

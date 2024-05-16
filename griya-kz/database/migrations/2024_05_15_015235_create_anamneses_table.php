@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anamnese', function (Blueprint $table) {
+        Schema::create('anamneses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pasien_id');
             $table->date('tanggal_masuk');
@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('terapi');
             $table->timestamps();
 
-            $table->foreign('poli_id')->references('id')->on('poli')->onDelete('cascade');
-            $table->foreign('pasien_id')->references('id')->on('pendaftaran')->onDelete('cascade');
-            $table->foreign('diagnosa_id')->references('id')->on('diagnosa')->onDelete('cascade');
+            $table->foreign('poli_id')->references('id')->on('polis')->onDelete('cascade');
+            $table->foreign('pasien_id')->references('id')->on('pendaftarans')->onDelete('cascade');
+            $table->foreign('diagnosa_id')->references('id')->on('diagnosas')->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('anamnese');
+        Schema::dropIfExists('anamneses');
     }
 };
