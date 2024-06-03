@@ -14,18 +14,15 @@ return new class extends Migration
         Schema::create('anamneses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pasien_id');
-            $table->date('tanggal_masuk');
-            $table->unsignedBigInteger('poli_id');
+            $table->enum('poli', ['umum', 'gigi']);
             $table->string('tekanan_darah');
             $table->string('suhu_tubuh');
-            $table->string('gejala');
-            $table->unsignedBigInteger('diagnosa_id');
-            $table->string('terapi');
+            $table->string('gejala')->nullable();
+            $table->string('diagnosa')->nullable();
+            $table->string('terapi')->nullable();
             $table->timestamps();
 
-            $table->foreign('poli_id')->references('id')->on('polis')->onDelete('cascade');
             $table->foreign('pasien_id')->references('id')->on('pendaftarans')->onDelete('cascade');
-            $table->foreign('diagnosa_id')->references('id')->on('diagnosas')->onDelete('cascade');
         });
     }
 

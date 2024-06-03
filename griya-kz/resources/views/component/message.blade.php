@@ -23,7 +23,7 @@
         var loginSuccessMessage = document.getElementById('loginSuccessMessage');
         setTimeout(function() {
             loginSuccessMessage.style.display = 'none';
-        }, 4000); // 5000 milidetik = 5 detik
+        }, 3000); // 5000 milidetik = 5 detik
     });
 </script>
 @endif

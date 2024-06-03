@@ -5,9 +5,14 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta name="author" content="">
+    <meta name="robots" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+    <meta property="og:title" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+    <meta property="og:description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+    <meta name="format-detection" content="telephone=no">
 
     <title>@yield('title')|GKZ</title>
 
@@ -18,72 +23,30 @@
 
 </head>
 
-<body id="page-top">
-    
+<body>
+
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="main-wrapper">
+        <!-- Topbar -->
+        @include('includes.header')
+        <!-- End of Topbar -->
         <!-- Sidebar -->
         @include('includes.sidebar')
         <!-- End of Sidebar -->
+        <!-- mesaage -->
+        <!-- Begin Page Content -->
+        @yield('content')
+        <!-- /.container-fluid -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <!-- End of Main Content -->
 
-            <!-- Main Content -->
-            <div id="content">
-
-
-                <!-- Topbar -->
-                @include('includes.header')
-                <!-- End of Topbar -->
-
-                <!-- mesaage -->
-                @include('component.message')
-                <!-- Begin Page Content -->
-                @yield('content')
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            @include('includes.footer')
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apakah anda ingin keluar?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Silahkan Kelik 'Logout'</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
+        <!-- Footer -->
+        @include('includes.footer')
+        <!-- End of Footer -->
+        <!-- Bootstrap core JavaScript-->
+        @stack('prepend-script')
+        @include('includes.script')
+        @stack('addon-script')
 
 </body>
 

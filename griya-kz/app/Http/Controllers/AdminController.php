@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pendaftaran;
 use Carbon\Carbon;
+use App\Models\Anamnese;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -47,7 +48,7 @@ class AdminController extends Controller
         ]);
 
         // return response()->json($request->all());
-        $addPasien = Pendaftaran::insert([
+        $addPasien = Pendaftaran::create([
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,
             'usia' => $request->usia,
@@ -59,10 +60,30 @@ class AdminController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        if ($addPasien) {
+
+
+        $anamnese = Anamnese::create([
+            'pasien_id' => $addPasien->id,
+            'poli' => $request->input('poli'),
+            'tekanan_darah' => $request->input('tekanan_darah'),
+            'suhu_tubuh' => $request->input('suhu_tubuh'),
+            'gejala' => $request->input('gejala'),
+            'diagnosa' => $request->input('diagnosa'),
+            'terapi' => $request->input('terapi'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        // return response()->json($request->all());
+        if ($anamnese) {
             Session::flash('success', 'Berhasil Menambahkan Data');
         }
+
         // return response()->json($addPasien);
+        return redirect('/admin/data-pasien');
+    }
+    public function hapuspendaftaran(Request $request)
+    {
+        Pendaftaran::where('id', $request->id)->delete();
         return redirect('/admin/data-pasien');
     }
 }

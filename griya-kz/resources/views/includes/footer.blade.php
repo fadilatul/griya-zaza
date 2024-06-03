@@ -1,9 +1,16 @@
- <!-- Footer -->
- <footer class="sticky-footer bg-white">
-     <div class="container my-auto">
-         <div class="copyright text-center my-auto">
-             <span>Copyright &copy; Your Website 2021</span>
-         </div>
-     </div>
- </footer>
- <!-- End of Footer -->
+   <!--**********************************
+    Footer start
+***********************************-->
+   <div class="footer">
+       <div class="copyright">
+           <p>Copyright ©
+               <script>
+                   document.write(new Date().getFullYear())
+               </script> <br>
+               <a href="" target="_blank">Griya Khitan Zaza</a>
+           </p>
+       </div>
+   </div>
+   <!--**********************************
+    Footer end
+***********************************-->

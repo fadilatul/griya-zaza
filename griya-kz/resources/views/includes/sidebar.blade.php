@@ -1,81 +1,94 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- Sidebar start
+*********************************** -->
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon">
-            <img src="{{asset('img/icon.png')}}" alt="" style="height: 50px; width:50px;">
+<div class="dlabnav">
+
+    <div class="dlabnav-scroll">
+        <div class="sidebar-user text-center">
+
+            <a href="profile">
+                <img class="avatar-lg rounded-circle img-thumbnail" src="{{ asset('griyakhitan/images/ava.png') }}" alt="" width="75px" />
+                <div class="badge-bottom"><span class="badge badge-primary">
+                        {{Auth::user()->name}}</span>
+                </div>
+                <h6 class="mt-3 f-14 f-w-600">
+
+                </h6>
+            </a>
         </div>
-        <div class="sidebar-brand-text mx-3">Griya Khitam Zaza</div>
-    </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+        <ul class="metismenu" id="menu">
+            @if(Auth::user()->role_id == '1')
+            <li class=""><a href="{{route('admin')}}">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Beranda</span>
+                </a>
+            </li>
+            @else
+            <li class=""><a href="{{route('dokter')}}">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Beranda</span>
+                </a>
+            </li>
+            @endif
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        @if (Auth::user()->role_id == 1)
-        <a class="nav-link" href="/admin">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-        @else
-        <a class="nav-link" href="/dokter">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-        @endif
+            @if(Auth::user()->role_id == '1')
+            <li><a href="{{route('data-pasien')}}" aria-expanded="false">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-text">Pendaftaran </span>
+                </a>
+            </li>
+            @else
+            <li><a href="{{route('data-priksa')}}" aria-expanded="false">
+                    <i class="fa fa-pen"></i>
+                    <span class="nav-text">Pemeriksaan</span>
+                </a>
+            </li>
+            @endif
+            <li><a href="#" aria-expanded="false">
+                    <i class="fa fa-database"></i>
+                    <span class="nav-text">Riwayat</span>
+                </a>
+            </li>
 
-    </li>
+            <li><a href="#" aria-expanded="false">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </li>
+            <!--<li><a href="#" aria-expanded="false">
+                <i class="fa fa-download"></i>
+                <span class="nav-text">Pusat Unduhan</span>
+            </a>
+        </li>-->
+        </ul>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Menu
+
+        <div class="copyright">
+            <p><strong>Griya Khitan Zaza </strong> ©
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> All Rights Reserved
+            </p>
+        </div>
     </div>
+</div>
+<!--**********************************
+    Sidebar end
+***********************************-->
 
-    @if (Auth::user()->role_id == '1')
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/admin/data-pasien">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pendaftaran</span></a>
-    </li>
-    @else
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pemeriksaan</span></a>
-    </li>
-    @endif
+@push('addon-script')
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
+        document.body.innerHTML = printContents;
 
-    @if (Auth::user()->role_id == 1)
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Riwayat</span></a>
-    </li>
+        window.print();
 
-    @endif
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Profile</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-</ul>
-<!-- End of Sidebar -->
+        document.body.innerHTML = originalContents;
+    }
+</script>
+@endpush

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('tanggal_lahir');
             $table->integer('usia');
-            $table->enum('keterangan', ['belumkawin', 'kawin']);
+            $table->enum('keterangan', ['belumkawin', 'kawin'])->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('nomer_hp')->nullable();
             $table->string('alamat');

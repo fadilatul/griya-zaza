@@ -12,26 +12,17 @@ class Anamnese extends Model
     protected $fillable = [
         'pasien_id',
         'tanggal_masuk',
-        'poli_id',
+        'poli',
         'tekanan_darah',
         'suhu_tubuh',
         'gejala',
-        'diagnosa_id',
-        'terapi'
+        'diagnosa',
+        'terapi',
+        'created_at'
     ];
 
     public function pasien()
     {
         return $this->belongsTo(Pendaftaran::class, 'pasien_id', 'id');
-    }
-
-    public function poli()
-    {
-        return $this->belongsTo(Poli::class, 'poli_id', 'id');
-    }
-
-    public function diagnosa()
-    {
-        return $this->belongsTo(Diagnosa::class, 'diagnosa_id', 'id');
     }
 }

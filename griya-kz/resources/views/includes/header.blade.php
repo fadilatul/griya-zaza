@@ -1,186 +1,116 @@
- <!-- Topbar -->
- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<div class="nav-header">
+    <a href="dashboard" class="brand-logo">
+        <img alt="image" width="25" src="{{ asset('griyakhitan/images/icon.png') }}">
+        <div class="brand-title">
+            <h2 class="">GKZ</h2>
+        </div>
+    </a>
+    <div class="nav-control">
+        <div class="hamburger">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Nav header end
+***********************************-->
 
-     <!-- Sidebar Toggle (Topbar) -->
-     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-         <i class="fa fa-bars"></i>
-     </button>
+<!--**********************************
+    Header start
+***********************************-->
+<div class="header border-bottom">
+    <div class="header-content">
 
-     <!-- Topbar Search -->
-     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-         <div class="input-group">
-             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-             <div class="input-group-append">
-                 <button class="btn btn-primary" type="button">
-                     <i class="fas fa-search fa-sm"></i>
-                 </button>
-             </div>
-         </div>
-     </form>
+        <nav class="navbar navbar-expand">
+            <div class="collapse navbar-collapse justify-content-between">
+                <div class="header-left">
+                    <div class="dashboard_bar">
+                    </div>
+                </div>
+                <ul class="navbar-nav header-right">
+                    <li class="nav-item d-flex align-items-center">
+                        @php
+                        $date = date('l, d F Y ');
+                        //$date = date('l, Y-m-d ');
+                        @endphp
+                        <strong>{{ $date }} &nbsp;
+                            <span id="jamServer">
+                                @php
+                                date_default_timezone_set('Asia/Jakarta');
+                                $datenow = date('H:i:s');
+                                @endphp
+                                <h6> <strong> {{ $datenow }}</strong></h6>
+                            </span>
+                        </strong>
+                    </li>
 
-     <!-- Topbar Navbar -->
-     <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown header-profile">
+                        <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
 
-         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-         <li class="nav-item dropdown no-arrow d-sm-none">
-             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-search fa-fw"></i>
-             </a>
-             <!-- Dropdown - Messages -->
-             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                 <form class="form-inline mr-auto w-100 navbar-search">
-                     <div class="input-group">
-                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                         <div class="input-group-append">
-                             <button class="btn btn-primary" type="button">
-                                 <i class="fas fa-search fa-sm"></i>
-                             </button>
-                         </div>
-                     </div>
-                 </form>
-             </div>
-         </li>
+                            <img class="avatar-lg rounded-circle img-thumbnail" src="{{ asset('griyakhitan/images/ava.png') }}" alt="" width="50px" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="profile" class="dropdown-item ai-icon">
+                                <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span class="ms-2">Profil </span>
+                            </a>
+                            <a href="/logout" class="dropdown-item ai-icon">
+                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span class="ms-2">Logout </span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
 
-         <!-- Nav Item - Alerts -->
-         <li class="nav-item dropdown no-arrow mx-1">
-             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-bell fa-fw"></i>
-                 <!-- Counter - Alerts -->
-                 <span class="badge badge-danger badge-counter">3+</span>
-             </a>
-             <!-- Dropdown - Alerts -->
-             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                 <h6 class="dropdown-header">
-                     Alerts Center
-                 </h6>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="mr-3">
-                         <div class="icon-circle bg-primary">
-                             <i class="fas fa-file-alt text-white"></i>
-                         </div>
-                     </div>
-                     <div>
-                         <div class="small text-gray-500">December 12, 2019</div>
-                         <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                     </div>
-                 </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="mr-3">
-                         <div class="icon-circle bg-success">
-                             <i class="fas fa-donate text-white"></i>
-                         </div>
-                     </div>
-                     <div>
-                         <div class="small text-gray-500">December 7, 2019</div>
-                         $290.29 has been deposited into your account!
-                     </div>
-                 </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="mr-3">
-                         <div class="icon-circle bg-warning">
-                             <i class="fas fa-exclamation-triangle text-white"></i>
-                         </div>
-                     </div>
-                     <div>
-                         <div class="small text-gray-500">December 2, 2019</div>
-                         Spending Alert: We've noticed unusually high spending for your account.
-                     </div>
-                 </a>
-                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-             </div>
-         </li>
+@push('addon-script')
+<script>
+    var serverClock = jQuery("#jamServer");
+    if (serverClock.length > 0) {
+        showServerTime(serverClock, serverClock.text());
+    }
 
-         <!-- Nav Item - Messages -->
-         <li class="nav-item dropdown no-arrow mx-1">
-             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-envelope fa-fw"></i>
-                 <!-- Counter - Messages -->
-                 <span class="badge badge-danger badge-counter">7</span>
-             </a>
-             <!-- Dropdown - Messages -->
-             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                 <h6 class="dropdown-header">
-                     Message Center
-                 </h6>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="dropdown-list-image mr-3">
-                         <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                         <div class="status-indicator bg-success"></div>
-                     </div>
-                     <div class="font-weight-bold">
-                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                             problem I've been having.</div>
-                         <div class="small text-gray-500">Emily Fowler · 58m</div>
-                     </div>
-                 </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="dropdown-list-image mr-3">
-                         <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                         <div class="status-indicator"></div>
-                     </div>
-                     <div>
-                         <div class="text-truncate">I have the photos that you ordered last month, how
-                             would you like them sent to you?</div>
-                         <div class="small text-gray-500">Jae Chun · 1d</div>
-                     </div>
-                 </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="dropdown-list-image mr-3">
-                         <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                         <div class="status-indicator bg-warning"></div>
-                     </div>
-                     <div>
-                         <div class="text-truncate">Last month's report looks great, I am very happy with
-                             the progress so far, keep up the good work!</div>
-                         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                     </div>
-                 </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                     <div class="dropdown-list-image mr-3">
-                         <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                         <div class="status-indicator bg-success"></div>
-                     </div>
-                     <div>
-                         <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                             told me that people say this to all dogs, even if they aren't good...</div>
-                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                     </div>
-                 </a>
-                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-             </div>
-         </li>
+    function showServerTime(obj, time) {
+        var parts = time.split(":"),
+            newTime = new Date();
 
-         <div class="topbar-divider d-none d-sm-block"></div>
+        newTime.setHours(parseInt(parts[0], 10));
+        newTime.setMinutes(parseInt(parts[1], 10));
+        newTime.setSeconds(parseInt(parts[2], 10));
 
-         <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown no-arrow">
-             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name}}</span>
-                 <img class="img-profile rounded-circle" src="{{asset('img/undraw_profile.svg')}}">
-             </a>
-             <!-- Dropdown - User Information -->
-             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                 <a class="dropdown-item" href="#">
-                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                     Profile
-                 </a>
-                 <a class="dropdown-item" href="#">
-                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                     Settings
-                 </a>
-                 <a class="dropdown-item" href="#">
-                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                     Activity Log
-                 </a>
-                 <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                     Logout
-                 </a>
-             </div>
-         </li>
+        var timeDifference = new Date().getTime() - newTime.getTime();
+        var methods = {
+            displayTime: function() {
+                var now = new Date(new Date().getTime() - timeDifference);
+                obj.text([
+                    methods.leadZeros(now.getHours(), 2),
+                    methods.leadZeros(now.getMinutes(), 2),
+                    methods.leadZeros(now.getSeconds(), 2)
+                ].join(":"));
+                setTimeout(methods.displayTime, 500);
+            },
 
-     </ul>
-
- </nav>
- <!-- End of Topbar -->
+            leadZeros: function(time, width) {
+                while (String(time).length < width) {
+                    time = "0" + time;
+                }
+                return time;
+            }
+        }
+        methods.displayTime();
+    }
+</script>
+@endpush
+<!--**********************************
+    Header end ti-comment-alt
+***********************************-->

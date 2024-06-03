@@ -21,6 +21,10 @@ class Pendaftaran extends Model
         'khitan_id'
     ];
 
+    public function anamneseMedis()
+    {
+        return $this->hasMany(Anamnese::class);
+    }
     public function khitan()
     {
         return $this->belongsTo(Khitan::class, 'khitan_id', 'id');

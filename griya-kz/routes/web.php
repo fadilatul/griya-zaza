@@ -26,6 +26,7 @@ Route::get('/coba', function () {
 });
 
 
+
 // ***********************AUTH******************************
 Route::get('/', [AuthController::class, 'index'])->middleware('isUser');
 Route::post('/', [AuthController::class, 'login'])->middleware('isUser');
@@ -33,14 +34,21 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 
 // *****************Admin**********************************
-Route::get('/admin', [AdminController::class, 'index'])->middleware('isLogin', 'AdminRole');
-Route::get('/admin/data-pasien', [AdminController::class, 'data_pasien'])->middleware('isLogin', 'AdminRole');
-Route::get('/admin/tambah-pasien', [AdminController::class, 'tambah_pasien']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('isLogin', 'AdminRole');
+Route::get('/admin/data-pasien', [AdminController::class, 'data_pasien'])->name('data-pasien')->middleware('isLogin', 'AdminRole');
+Route::get('/admin/tambah-pasien', [AdminController::class, 'tambah_pasien'])->name('tambah-data');
 Route::post('/admin/tambah-pasien', [AdminController::class, 'add_pasien']);
-Route::get('/admin/rekam-medis/{id}', [RekamController::class, 'rekam_medis'])->name('rekam-medis');
 
-Route::get('/admin/tambah-rekam/{id}', [RekamController::class, 'tambah_rekam']);
-Route::post('/admin/tambah-rekam', [RekamController::class, 'add_rekam']);
+Route::post('/admin/delete/{id}', [AdminController::class, 'hapuspendaftaran'])->name('delete-data');
+
 
 //*****************Dokter********************************** */
-Route::get('/dokter', [DoktorController::class, 'index'])->middleware('isLogin', 'DokterRole');
+Route::get('/dokter', [DoktorController::class, 'index'])->name('dokter')->middleware('isLogin', 'DokterRole');
+Route::get('/dokter/priksa', [DoktorController::class, 'priksa_pasien'])->name('data-priksa')->middleware('isLogin', 'DokterRole');
+
+// *****************Rekam Medis**********************************
+Route::get('rekam-medis/{pasien_id}', [RekamController::class, 'rekam_medis'])->name('rekam_medis');
+Route::get('rekam-medis/{pasien_id}/tambah', [RekamController::class, 'tambah_rekam'])->name('tambah_rekam');
+Route::post('rekam-medis/{pasien_id}/add', [RekamController::class, 'add_rekam'])->name('add_rekam');
+Route::get('rekam-medis/{pasien_id}/edit', [RekamController::class, 'edit_rekam'])->name('edit_rekam');
+Route::post('rekam-medis/{pasien_id}/update-medis', [RekamController::class, 'update_rekam'])->name('update_rekam');
