@@ -45,6 +45,12 @@
                 </a>
             </li>
             @endif
+            <li><a href="{{route('khitan')}}" aria-expanded="false">
+                    <i class="fa fa-crop"></i>
+                    <span class="nav-text">Khitan</span>
+                </a>
+            </li>
+
             <li><a href="#" aria-expanded="false">
                     <i class="fa fa-database"></i>
                     <span class="nav-text">Riwayat</span>

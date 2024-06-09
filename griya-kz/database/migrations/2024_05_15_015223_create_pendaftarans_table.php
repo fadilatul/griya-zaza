@@ -21,10 +21,7 @@ return new class extends Migration
             $table->string('nomer_hp')->nullable();
             $table->string('alamat');
             $table->enum('kategori', ['umum', 'bpjs']);
-            $table->unsignedBigInteger('khitan_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('khitan_id')->references('id')->on('khitans')->onDelete('cascade');
         });
     }
 

@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Khitan extends Model
 {
     use HasFactory;
+    public $table = 'khitans';
     protected $fillable = [
-        'name'
+        'name',
+        'tanggal',
+        'jam',
+        'jenis_paket',
+        'tempat',
+        'alamat'
     ];
 }

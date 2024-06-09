@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('khitans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->date('tanggal');
             $table->time('jam');
-            $table->enum('jenis', ['paket1', 'paket2', 'paket3', 'paket4']);
+            $table->enum('jenis_paket', ['paket1', 'paket2', 'paket3', 'paket4']);
             $table->enum('tempat', ['klinik', 'rumah']);
+            $table->string('alamat');
             $table->timestamps();
         });
     }

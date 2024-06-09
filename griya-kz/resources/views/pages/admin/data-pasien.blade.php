@@ -15,7 +15,7 @@
 
                          <!-- center modal -->
                          <div>
-                             <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i class="fa fa-print"> </i></button>
+                             <button id="downloadExcel" class="btn btn-info waves-effect waves-light mb-4"><i class="fa fa-print"> </i></button>
                              <a href="{{route('tambah-data')}}"><button type="button" class="btn btn-primary mb-4" style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah
                                      Pendaftaran</button></a>
                          </div>
@@ -118,5 +118,21 @@
                  }
              })
          })
+     </script>
+
+     <script>
+         document.getElementById('downloadExcel').addEventListener('click', function() {
+             fetch('/export-excel')
+                 .then(response => response.blob())
+                 .then(blob => {
+                     const url = window.URL.createObjectURL(blob);
+                     const a = document.createElement('a');
+                     a.href = url;
+                     a.download = 'pasien.xlsx';
+                     document.body.appendChild(a);
+                     a.click();
+                     a.remove();
+                 });
+         });
      </script>
      @endpush

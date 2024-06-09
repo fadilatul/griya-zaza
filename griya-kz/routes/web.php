@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DoktorController;
-use App\Http\Controllers\RekamController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RekamController;
+use App\Http\Controllers\DoktorController;
+use App\Http\Controllers\ExcelExportController;
+use App\Http\Controllers\KhitanController;
+use App\Models\Khitan;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +55,17 @@ Route::get('rekam-medis/{pasien_id}/tambah', [RekamController::class, 'tambah_re
 Route::post('rekam-medis/{pasien_id}/add', [RekamController::class, 'add_rekam'])->name('add_rekam');
 Route::get('rekam-medis/{pasien_id}/edit', [RekamController::class, 'edit_rekam'])->name('edit_rekam');
 Route::post('rekam-medis/{pasien_id}/update-medis', [RekamController::class, 'update_rekam'])->name('update_rekam');
+
+
+// *****************Exel download**********************************
+Route::get('/export-excel', [ExcelExportController::class, 'export']);
+
+// *****************Khitan**********************************
+Route::get('/khitan', [KhitanController::class, 'index'])->name('khitan');
+Route::get('/tambah-khitan', [KhitanController::class, 'create'])->name('tambah_khitan');
+Route::post('/add-khitan', [KhitanController::class, 'add']);
+
+Route::post('/delete/{id}', [KhitanController::class, 'hapus'])->name('delete');
+Route::get('khitan/{id}/detail', [KhitanController::class, 'detail'])->name('detail_khitan');
+Route::get('khitan/{id}/edit', [KhitanController::class, 'edit'])->name('edit_khitan');
+Route::post('/update-khitan', [KhitanController::class, 'update'])->name('khitan_update');
