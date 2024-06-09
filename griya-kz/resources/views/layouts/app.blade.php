@@ -15,7 +15,6 @@
     <meta name="format-detection" content="telephone=no">
 
     <title>@yield('title')|GKZ</title>
-
     <!-- includes to style -->
     @stack('prepend-style')
     @include('includes.style')

@@ -1,4 +1,4 @@
-<link rel="shortcut icon" type="image/png" href="{{ asset('griyakhitan/images/logo.png') }}">
+<link rel="shortcut icon" type="image/png" href="{{ asset('griyakhitan/images/g.png') }}">
 
 <!-- Datatable -->
 <link href="{{ asset('griyakhitan/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
@@ -12,7 +12,9 @@
 <!-- asColorpicker -->
 <link href="{{ asset('griyakhitan/vendor/jquery-asColorPicker/css/asColorPicker.min.css') }}" rel="stylesheet">
 <!-- Material color picker -->
-<link href="{{ asset('griyakhitan/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+<link
+    href="{{ asset('griyakhitan/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}"
+    rel="stylesheet">
 
 <!-- Pick date -->
 <link rel="stylesheet" href="{{ asset('griyakhitan/vendor/pickadate/themes/default.css') }}">

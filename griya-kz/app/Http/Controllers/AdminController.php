@@ -12,7 +12,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.index');
+        $jmlpasien = Pendaftaran::count();
+        return view('pages.admin.index', compact('jmlpasien'));
     }
 
     public function data_pasien(Request $request)
