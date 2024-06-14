@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Anamnese;
 use App\Models\Pendaftaran;
+use App\Models\Khitan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,7 +14,8 @@ class AdminController extends Controller
     public function index()
     {
         $jmlpasien = Pendaftaran::count();
-        return view('pages.admin.index', compact('jmlpasien'));
+        $jmlkhitan = Khitan::count();
+        return view('pages.admin.index', compact('jmlpasien','jmlkhitan'));
     }
 
     public function data_pasien(Request $request)

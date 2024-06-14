@@ -35,11 +35,11 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="font-weight-bold text-success text-uppercase mb-1 text-xs">
-                                        Earnings (Annual)</div>
-                                    <div class="h5 font-weight-bold mb-0 text-gray-800">$215,000</div>
+                                        Pasien Khitan</div>
+                                    <div class="h5 font-weight-bold mb-0 text-gray-800">{{ $jmlkhitan }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-warning"></i>
+                                    <i class="fas fa-calendar fa-2x text-primary"></i>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +52,11 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="font-weight-bold text-info text-uppercase mb-1 text-xs">Tasks
+                                    <div class="font-weight-bold text-info text-uppercase mb-1 text-xs">
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
-                                            <div class="h5 font-weight-bold mb-0 mr-3 text-gray-800">50%</div>
+                                            <div class="h5 font-weight-bold mb-0 mr-3 text-gray-800"></div>
                                         </div>
                                         <div class="col">
                                             <div class="progress progress-sm mr-2">
@@ -81,7 +81,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="font-weight-bold text-warning text-uppercase mb-1 text-xs">
-                                        Pending Requests</div>
+                                        Pasien Belum Diperiksa</div>
                                     <div class="h5 font-weight-bold mb-0 text-gray-800">18</div>
                                 </div>
                                 <div class="col-auto">
