@@ -34,6 +34,7 @@ Data Khitan
                                         <th>Jenis Paket</th>
                                         <th>Tempat Khitan</th>
                                         <th>Alamat</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,13 @@ Data Khitan
                                         <td>{{$khitans->jenis_paket}}</td>
                                         <td>{{$khitans->tempat}}</td>
                                         <td>{{$khitans->alamat}}</td>
+                                        <td>
+                                            @if($khitans->status == 'belum')
+                                            <button class="btn btn-warning">{{$khitans->status}}</button>
+                                            @else
+                                            <button class="btn btn-success">{{$khitans->status}}</button>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-success shadow btn-xs sharp me-1" title="Detail" href="{{ route('detail_khitan', ['id' => $khitans->id]) }}"><i class="fa fa-file-alt"></i></a>

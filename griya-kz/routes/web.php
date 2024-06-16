@@ -7,6 +7,7 @@ use App\Http\Controllers\RekamController;
 use App\Http\Controllers\DoktorController;
 use App\Http\Controllers\ExcelExportController;
 use App\Http\Controllers\KhitanController;
+use App\Http\Controllers\RiwayatController;
 use App\Models\Khitan;
 
 /*
@@ -69,3 +70,6 @@ Route::post('/delete/{id}', [KhitanController::class, 'hapus'])->name('delete');
 Route::get('khitan/{id}/detail', [KhitanController::class, 'detail'])->name('detail_khitan');
 Route::get('khitan/{id}/edit', [KhitanController::class, 'edit'])->name('edit_khitan');
 Route::post('/update-khitan', [KhitanController::class, 'update'])->name('khitan_update');
+
+// *****************Riwayat**********************************
+Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');

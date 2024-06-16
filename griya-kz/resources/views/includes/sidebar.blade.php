@@ -51,7 +51,8 @@
                 </a>
             </li>
 
-            <li><a href="#" aria-expanded="false">
+            <li>
+                <a href="{{route('riwayat')}}" aria-expanded="false">
                     <i class="fa fa-database"></i>
                     <span class="nav-text">Riwayat</span>
                 </a>

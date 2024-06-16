@@ -15,6 +15,7 @@ class Khitan extends Model
         'jam',
         'jenis_paket',
         'tempat',
-        'alamat'
+        'alamat',
+        'status'
     ];
 }

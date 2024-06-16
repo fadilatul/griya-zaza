@@ -27,6 +27,7 @@ Tambah Data Khitan
                             </a>
                             <div id="personal-data" class="collapse show">
                                 <div class="p-4 border-top">
+                                    <input type="hidden" name="status" value="belum">
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="mb-3 mb-4">

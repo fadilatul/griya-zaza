@@ -30,6 +30,20 @@ Edit Data Khitan
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="mb-3 mb-4">
+                                                <label class="form-label" for="personal-data-gender">Status</label>
+                                                <select class="form-control" name="status">
+                                                    @if($khitan->status == 'belum')
+                                                    <option selected>{{$khitan->status}}</option>
+                                                    <option value="selesai">selesai</option>
+                                                    @else
+                                                    <option selected>{{$khitan->status}}</option>
+                                                    <option value="belum">belum</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="mb-3 mb-4">
                                                 <label class="form-label" for="personal-data-nisn">Nama Lengkap</label>
                                                 <input type="text" class="form-control" name="name" value="{{$khitan->name}}">
                                             </div>

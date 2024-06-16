@@ -27,6 +27,7 @@ class KhitanController extends Controller
             'jenis_paket' => 'required',
             'tempat' => 'required',
             'alamat' => 'required',
+            'status' => 'required',
         ], [
             'name.required' => 'Nama Wajib Di isi',
             'tanggal.required' => 'Tanggal Daftar Wajib Di isi',
@@ -44,6 +45,7 @@ class KhitanController extends Controller
             'jenis_paket' => $request->jenis_paket,
             'tempat' => $request->tempat,
             'alamat' => $request->alamat,
+            'status' => $request->status,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -86,6 +88,7 @@ class KhitanController extends Controller
         $khitan->jenis_paket = $request->jenis_paket;
         $khitan->tempat = $request->tempat;
         $khitan->alamat = $request->alamat;
+        $khitan->status = $request->status;
         $khitan->save();
         // return response()->json($khitan);
         return redirect('/khitan')->with('success', 'Data updated successfully');

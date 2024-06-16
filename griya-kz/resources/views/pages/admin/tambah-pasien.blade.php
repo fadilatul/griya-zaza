@@ -145,13 +145,13 @@ Tambah Data Pasien
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="mb-4 mb-lg-0">
                                                 <label class="form-label">Nomer Hp/WhatApp</label>
                                                 <input type="number" class="form-control" id="basicpill" name="nomer_hp" placeholder="Masukkan Nomer Hp" value="{{ old('tempatlahir') }}" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="mb-4 mb-lg-0">
                                                 <label class="form-label" for="billing-city">Kategori</label>
                                                 <select class="form-control wide" name="kategori" value="">
@@ -162,20 +162,7 @@ Tambah Data Pasien
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="mb-4">
-                                                <label class="form-label pb-2" for="billing-city">Khitan</label><br>
-                                                <div class="form-check form-check-inline" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="iya">
-                                                    <label class="form-check-label" for="inlineRadio1">Iya</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="tidak">
-                                                    <label class="form-check-label" for="inlineRadio2">Tidak</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
+                                        <div class="mb-4 mt-4">
                                             <label class="form-label" for="billing-address">Alamat</label>
 
                                             <textarea class="form-control" id="billing-address" rows="3" name="alamat" required placeholder="Masukkan alamat lengkap">{{ old('alamat') }}</textarea>

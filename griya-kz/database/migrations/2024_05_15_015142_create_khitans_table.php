@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('jenis_paket', ['paket1', 'paket2', 'paket3', 'paket4']);
             $table->enum('tempat', ['klinik', 'rumah']);
             $table->string('alamat');
+            $table->enum('status', ['selesai', 'belum']);
             $table->timestamps();
         });
     }
