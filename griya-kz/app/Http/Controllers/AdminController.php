@@ -33,6 +33,7 @@ class AdminController extends Controller
     public function add_pasien(Request $request)
     {
         $request->validate([
+            'jenis_pemeriksaan' => 'required',
             'name' => 'required',
             'tanggal_lahir' => 'required',
             'usia' => 'required',
@@ -41,6 +42,7 @@ class AdminController extends Controller
             'alamat' => 'required',
             'kategori' => 'required',
         ], [
+            'jenis_pemeriksaan' => 'Pilih Jenis Periksa',
             'name.required' => 'Nama Wajib Di isi',
             'tanggal_lahir.required' => 'Tanggal Lahir Wajib Di isi',
             'usia.required' => 'Usia Wajib Di isi',
@@ -52,6 +54,7 @@ class AdminController extends Controller
 
         // return response()->json($request->all());
         $addPasien = Pendaftaran::create([
+            'jenis_pemeriksaan' => $request->jenis_pemeriksaan,
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,
             'usia' => $request->usia,

@@ -40,7 +40,8 @@ Scripts
   <script src="{{ asset('griyakhitan/vendor/jquery-asGradient/jquery-asGradient.min.js') }}"></script>
   <script src="{{ asset('griyakhitan/vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js') }}"></script>
   <!-- Material color picker -->
-  <script src="{{ asset('griyakhitan/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}">
+  <script
+      src="{{ asset('griyakhitan/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}">
   </script>
   <!-- pickdate -->
   <script src="{{ asset('griyakhitan/vendor/pickadate/picker.js') }}"></script>

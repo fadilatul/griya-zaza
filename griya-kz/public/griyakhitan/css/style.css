@@ -4,7 +4,7 @@
     Name                 : FILLOW
     Author               : DexignZone
     Author Portfolio     : https://themeforest.net/user/dexignzone/portfolio
-    
+
 
 
     Table of Sass Contents
@@ -16,7 +16,7 @@
         _mixin
         _variable
 
-    2. bootstrap 
+    2. bootstrap
         -Here goes all official bootstrap scss files
 
     3. Global/Base
@@ -75,12 +75,12 @@
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 
 :root {
-    --primary: #eb8153;
-    --secondary: #6418C3;
-    --primary-hover: #e66025;
+    /* --primary: #4CB32B; */
+    --secondary: #09BD3C;
+    --primary-hover: #79cf5c;
     --primary-light: #fbe5dc;
     --primary-dark: #943911;
-    --rgba-primary-1: rgba(235, 129, 83, 0.1);
+    --rgba-primary-1: rgba(144, 235, 83, 0.1);
     --rgba-primary-2: rgba(235, 129, 83, 0.2);
     --rgba-primary-3: rgba(235, 129, 83, 0.3);
     --rgba-primary-4: rgba(235, 129, 83, 0.4);
@@ -92,8 +92,8 @@
     --font-family-base: Roboto, sans-serif;
     --font-family-title: Roboto, sans-serif;
     --title: #000;
-    --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-    --tryal-gradient: linear-gradient(212.43deg, #eb8153 19.43%, #AA6CC0 87.63%);
+    --gradient-one: linear-gradient(180deg, #099a1a 0%, #6dffa2 100%);
+    --tryal-gradient: linear-gradient(212.43deg, #79eb53 19.43%, #84c06c 87.63%);
 }
 
 .gradient_one {
@@ -101,8 +101,8 @@
 }
 
 .gradient-1 {
-    background: #f0a907;
-    background: -moz-linear-gradient(top, #f0a907 0%, #f53c79 100%);
+    background: #2be04a;
+    background: -moz-linear-gradient(top, #26f007 0%, #f53c79 100%);
     background: -webkit-linear-gradient(top, #f0a907 0%, #f53c79 100%);
     background: linear-gradient(to bottom, #f0a907 0%, #f53c79 100%) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0a907', endColorstr='#f53c79', GradientType=0);
@@ -174,15 +174,15 @@
 .datepicker table tr td.today:hover,
 .datepicker table tr td.today.disabled,
 .datepicker table tr td.today.disabled:hover {
-    background: #f31e7a !important;
-    background: -moz-linear-gradient(left, #f31e7a 0%, #fd712c 100%);
-    background: -webkit-linear-gradient(left, #f31e7a 0%, #fd712c 100%);
-    background: linear-gradient(to right, #f31e7a 0%, #fd712c 100%) !important;
+    background: #49f31e !important;
+    background: -moz-linear-gradient(left, #29f31e 0%, #42ff2d 100%);
+    background: -webkit-linear-gradient(left, #4afc2a 0%, #42ff2d 100%);
+    background: linear-gradient(to right, #1ef33a 0%, #83fd2c 100%) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f31e7a', endColorstr='#fd712c', GradientType=1);
 }
 
 .gradient-10 {
-    background: #f25521 !important;
+    background: #21f22f !important;
     background: -moz-linear-gradient(left, #f25521 0%, #f9c70a 100%);
     background: -webkit-linear-gradient(left, #f25521 0%, #f9c70a 100%);
     background: linear-gradient(to top, #f25521 0%, #f9c70a 100%) !important;
@@ -283,7 +283,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
-    --bs-primary: rgba(255, 196, 170, 0.9);
+    /* --bs-primary: rgba(41, 188, 0, 0.9); */
     --bs-secondary: #FFA7D7;
     --bs-success: #09BD3C;
     --bs-info: #FFA26D;
@@ -493,12 +493,12 @@ sup {
 }
 
 a {
-    color: #eb8153;
+    color: #4CB32B;
     text-decoration: underline;
 }
 
 a:hover {
-    color: #FFA26D;
+    color: #4CB32B;
 }
 
 a:not([href]):not([class]),
@@ -13912,7 +13912,7 @@ svg.pulse-svg .third-circle {
   		@include respond('laptop') {
   			height:3rem;
   		}
-  		
+
   	}
   	.input-group-text{
   		border-top-right-radius: 2.625rem;
@@ -13920,8 +13920,8 @@ svg.pulse-svg .third-circle {
   		background:#F1F1F1;
   		a{
   			i{
-  				font-size:1.5rem;	
-  			}	
+  				font-size:1.5rem;
+  			}
   		}
   		@include respond('laptop') {
   			height:3rem;
@@ -17824,7 +17824,6 @@ svg.pulse-svg .third-circle {
 [direction="rtl"] .noUi-vertical .noUi-pips-vertical {
     left: -20px;
 }
-
 [direction="rtl"] .noUi-vertical .noUi-value-vertical {
     padding-left: 0;
     padding-right: 25px;
@@ -18990,9 +18989,9 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -19321,10 +19320,10 @@ The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
-    --primary-hover: #6c4bae;
+    --primary-light: #09BD3C;
+    --primary-hover: #6c4bae ;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
     --rgba-primary-2: rgba(136, 108, 192, 0.2);
@@ -19703,9 +19702,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -22622,7 +22621,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -22807,7 +22806,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -22992,7 +22991,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -23177,7 +23176,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -23362,7 +23361,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -23547,7 +23546,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -23732,7 +23731,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -23917,7 +23916,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -24102,7 +24101,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -24287,7 +24286,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -24472,7 +24471,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -24657,7 +24656,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -24842,7 +24841,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -25027,7 +25026,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   	.dlabnav .metismenu > li.mm-active > a,
   	.dlabnav .metismenu > li:hover > a{
   			background:transparent;
-  	}	
+  	}
   } */
 }
 
@@ -26485,9 +26484,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C3;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -26696,9 +26695,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -29847,9 +29846,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -30544,9 +30543,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -30917,9 +30916,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -30948,9 +30947,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -30999,9 +30998,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
-    --primary-light: #a590cf;
+    --primary-light: #09BD3C;
     --primary-hover: #6c4bae;
     --primary-dark: #402c67;
     --rgba-primary-1: rgba(136, 108, 192, 0.1);
@@ -31075,7 +31074,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
     --primary-light: #a590cf;
     --primary-hover: #6c4bae;
@@ -43062,7 +43061,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-    --primary: #eb8153;
+    --primary: #09BD3C;
     --secondary: #FFA7D7;
     --primary-light: #a590cf;
     --primary-hover: #6c4bae;

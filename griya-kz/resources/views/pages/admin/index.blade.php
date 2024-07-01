@@ -1,6 +1,7 @@
 @extends('layouts.app')
+
 @section('title')
-    Halaman Admin
+    Halaman Utama
 @endsection
 
 @section('content')
@@ -8,28 +9,28 @@
         @include('component.message')
         <div class="container-fluid">
             <!-- Content Row -->
-            <div class="row">
+            <div class="row justify-content-center">
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
+                <!-- Jumlah Pasien -->
+                <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-primary h-100 py-2 shadow">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
-                                <div class="col mx-2">
+                                <div class="col mr-2">
                                     <div class="font-weight-bold text-primary text-uppercase mb-1 text-xs">
                                         Jumlah Pasien</div>
-                                    <div class="h5 font-weight-bold mb-0 text-gray-800">{{ $jmlpasien }}</div>
+                                    <div class="h5 font-weight-bold mb-0 text-gray-800"> {{ $jmlpasien }} </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-primary"></i>
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
+                <!-- Pasien Khitan -->
+                <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-success h-100 py-2 shadow">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -39,53 +40,25 @@
                                     <div class="h5 font-weight-bold mb-0 text-gray-800">{{ $jmlkhitan }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-primary"></i>
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-info h-100 py-2 shadow">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="font-weight-bold text-info text-uppercase mb-1 text-xs">
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 font-weight-bold mb-0 mr-3 text-gray-800"></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-secondary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pending Requests Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
+                <!-- Belum Diperiksa -->
+                <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-warning h-100 py-2 shadow">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="font-weight-bold text-warning text-uppercase mb-1 text-xs">
-                                        Pasien Belum Diperiksa</div>
-                                    <div class="h5 font-weight-bold mb-0 text-gray-800">18</div>
+                                        Belum Diperiksa</div>
+                                    <div class="h5 font-weight-bold mb-0 text-gray-800">3</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-light"></i>
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -93,81 +66,100 @@
                 </div>
             </div>
 
-            <!-- Content Row -->
-
-            <div class="row">
-
-                <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7">
-                    <div class="card mb-4 shadow">
-                        <!-- Card Header - Dropdown -->
+            <!-- Baris Konten Bawah -->
+            <div class="row justify-content-center mb-4">
+                <!-- Kolom 1 - Jumlah Pasien -->
+                <div class="col-xl-12 mb-4">
+                    <div class="card h-100 shadow">
                         <div class="card-header d-flex align-items-center justify-content-between flex-row py-3">
-                            <h6 class="font-weight-bold text-primary m-0">Earnings Overview</h6>
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right animated--fade-in shadow"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
+                            <h6 class="font-weight-bold text-primary m-0">Data Jumlah Pasien</h6>
                         </div>
-                        <!-- Card Body -->
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                                <canvas id="patientChart" width="400" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kolom 2 - Jumlah Pasien Khitan -->
+                <div class="col-xl-12 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-header d-flex align-items-center justify-content-between flex-row py-3">
+                            <h6 class="font-weight-bold text-primary m-0">Jumlah Pasien Khitan</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-pie pb-2 pt-4">
+                                <canvas id="khitanChart" width="400" height="100"></canvas>
+                            </div>
+                            <div class="small mt-4 text-center">
+                                <!-- Placeholder untuk Grafik -->
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pie Chart -->
-                <div class="col-xl-4 col-lg-5">
-                    <div class="card mb-4 shadow">
-                        <!-- Card Header - Dropdown -->
-                        <div class="card-header d-flex align-items-center justify-content-between flex-row py-3">
-                            <h6 class="font-weight-bold text-primary m-0">Revenue Sources</h6>
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right animated--fade-in shadow"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <div class="chart-pie pb-2 pt-4">
-                                <canvas id="myPieChart"></canvas>
-                            </div>
-                            <div class="small mt-4 text-center">
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-primary"></i> Direct
-                                </span>
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-success"></i> Social
-                                </span>
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-info"></i> Referral
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var patientLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
+            var patientData = [10, 20, 30, 40, 50, 60];
+
+            var khitanLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
+            var khitanData = [5, 15, 25, 35, 45, 55];
+
+            // Debugging: Output data to the console
+            console.log('Patient Labels:', patientLabels);
+            console.log('Patient Data:', patientData);
+            console.log('Khitan Labels:', khitanLabels);
+            console.log('Khitan Data:', khitanData);
+
+            var ctx1 = document.getElementById('patientChart').getContext('2d');
+            var patientChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: patientLabels,
+                    datasets: [{
+                        label: 'Pendaftaran Pasien',
+                        data: patientData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            var ctx2 = document.getElementById('khitanChart').getContext('2d');
+            var khitanChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: khitanLabels,
+                    datasets: [{
+                        label: 'Data Khitan',
+                        data: khitanData,
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Pasien Terdaftar</h4>
+                            <h4 class="card-title">Data Pasien Periksa Gigi</h4>
                             <div>
                                 <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')">
                                     <i class="fa fa-print"></i> Cetak
@@ -33,7 +33,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_umum as $item)
+                                        @foreach ($data_gigi as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->name }}</td>
@@ -45,7 +45,7 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <a href="{{ route('rekam_umum', $item->id) }}"
+                                                            <a href="{{ route('rekam_gigi', $item->id) }}"
                                                                 class="btn btn-success mx-4">
                                                                 <i class="fas fa-clipboard"></i>
                                                             </a>

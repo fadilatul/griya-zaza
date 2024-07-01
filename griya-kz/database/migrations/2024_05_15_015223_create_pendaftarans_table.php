@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
+            $table->enum('jenis_pemeriksaan', ['periksa_umum', 'periksa_gigi']);
             $table->string('name');
             $table->date('tanggal_lahir');
             $table->integer('usia');

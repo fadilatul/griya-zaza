@@ -17,14 +17,21 @@ class DoktorController extends Controller
         return view('pages.dokter.index', compact('jumpasien','jumkhit'));
     }
 
-    // public function index()
-    // {
-    //     return view('pages.dokter.index');
-    // }
 
-    public function priksa_pasien()
+
+    public function priksa_umum(Request $request)
     {
-        $data = Pendaftaran::orderBy('created_at', 'DESC')->get();
-        return view('pages.dokter.data-priksa', compact('data'));
+        $data_umum = Pendaftaran::where('jenis_pemeriksaan', 'periksa_umum')
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
+        return view('pages.dokter.data-priksa', compact('data_umum'));
+    }
+
+    public function priksa_gigi(Request $request)
+    {
+        $data_gigi = Pendaftaran::where('jenis_pemeriksaan', 'periksa_gigi')
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
+        return view('pages.dokter.data-gigi', compact('data_gigi'));
     }
 }

@@ -48,10 +48,13 @@ Route::post('/admin/delete/{id}', [AdminController::class, 'hapuspendaftaran'])-
 
 //*****************Dokter********************************** */
 Route::get('/dokter', [DoktorController::class, 'index'])->name('dokter')->middleware('isLogin', 'DokterRole');
-Route::get('/dokter/priksa', [DoktorController::class, 'priksa_pasien'])->name('data-priksa')->middleware('isLogin', 'DokterRole');
+Route::get('/dokter/priksa', [DoktorController::class, 'priksa_umum'])->name('data-priksa')->middleware('isLogin', 'DokterRole');
+Route::get('/dokter/gigi', [DoktorController::class, 'priksa_gigi'])->name('data-gigi');
 
 // *****************Rekam Medis**********************************
 Route::get('rekam-medis/{pasien_id}', [RekamController::class, 'rekam_medis'])->name('rekam_medis');
+Route::get('rekam-gigi/{pasien_id}', [RekamController::class, 'rekam_dokterGigi'])->name('rekam_gigi');
+Route::get('rekam-umum/{pasien_id}', [RekamController::class, 'rekam_dokterumum'])->name('rekam_umum');
 Route::get('rekam-medis/{pasien_id}/tambah', [RekamController::class, 'tambah_rekam'])->name('tambah_rekam');
 Route::post('rekam-medis/{pasien_id}/add', [RekamController::class, 'add_rekam'])->name('add_rekam');
 Route::get('rekam-medis/{pasien_id}/edit', [RekamController::class, 'edit_rekam'])->name('edit_rekam');
