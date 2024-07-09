@@ -63,7 +63,8 @@
                                                  <td>
                                                      <div class="d-flex">
                                                          <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                             href="edit-registration/"><i class="fa fa-pencil-alt"></i></a>
+                                                             href="{{ route('edit_pasien', ['id' => $item->id]) }}"><i
+                                                                 class="fa fa-pencil-alt"></i></a>
                                                          <a class="btn btn-danger shadow btn-xs sharp"><i
                                                                  class="fa fa-trash" data-bs-toggle="modal"
                                                                  data-bs-target=".delete"></i></a>

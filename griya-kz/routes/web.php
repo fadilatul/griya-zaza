@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Khitan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RekamController;
 use App\Http\Controllers\DoktorController;
-use App\Http\Controllers\ExcelExportController;
 use App\Http\Controllers\KhitanController;
 use App\Http\Controllers\RiwayatController;
-use App\Models\Khitan;
+use App\Http\Controllers\ExcelExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middlewa
 Route::get('/admin/data-pasien', [AdminController::class, 'data_pasien'])->name('data-pasien')->middleware('isLogin', 'AdminRole');
 Route::get('/admin/tambah-pasien', [AdminController::class, 'tambah_pasien'])->name('tambah-data');
 Route::post('/admin/tambah-pasien', [AdminController::class, 'add_pasien']);
+Route::get('/admin/edit-pasien/{id}', [AdminController::class, 'edit'])->name('edit_pasien');
+Route::put('/admin/update-pasien/{id}', [AdminController::class, 'update'])->name('update_pasien');
 
 Route::post('/admin/delete/{id}', [AdminController::class, 'hapuspendaftaran'])->name('delete-data');
 
@@ -71,8 +74,14 @@ Route::post('/add-khitan', [KhitanController::class, 'add']);
 
 Route::post('/delete/{id}', [KhitanController::class, 'hapus'])->name('delete');
 Route::get('khitan/{id}/detail', [KhitanController::class, 'detail'])->name('detail_khitan');
-Route::get('khitan/{id}/edit', [KhitanController::class, 'edit'])->name('edit_khitan');
-Route::post('/update-khitan', [KhitanController::class, 'update'])->name('khitan_update');
+Route::get('/khitan/edit/{id}', [KhitanController::class, 'edit'])->name('edit_khitan');
+Route::post('/khitan/update/{id}', [KhitanController::class, 'update'])->name('update_khitan');
+
+// Route::get('khitan/{id}/edit', [KhitanController::class, 'edit'])->name('edit_khitan');
+// Route::post('/update-khitan', [KhitanController::class, 'update'])->name('khitan_update');
+
 
 // *****************Riwayat**********************************
-Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+Route::get('/riwayat', [RiwayatController::class, 'pasien_priksa'])->name('riwayat');
+// *****************Grafik**********************************
+Route::get('/admin/dashboard', [ChartController::class, 'index']);

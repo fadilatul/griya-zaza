@@ -65,17 +65,6 @@
                     <span class="nav-text">Riwayat</span>
                 </a>
             </li>
-
-            <li><a href="#" aria-expanded="false">
-                    <i class="fa fa-user"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-            </li>
-            <!--<li><a href="#" aria-expanded="false">
-                <i class="fa fa-download"></i>
-                <span class="nav-text">Pusat Unduhan</span>
-            </a>
-        </li>-->
         </ul>
 
 

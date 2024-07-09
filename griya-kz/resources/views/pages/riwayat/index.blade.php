@@ -3,80 +3,191 @@
 @section('title', 'Data Grafik')
 
 @section('content')
-<div class="content-body">
-    <div class="container">
-        <h2>Data Pendaftaran dan Khitan</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <canvas id="patientChart" width="400" height="200"></canvas>
-            </div>
-            <div class="col-md-6">
-                <canvas id="khitanChart" width="400" height="200"></canvas>
+    <div class="content-body">
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Data Pasien Terdaftar</h4>
+                    <div>
+                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')">
+                            <i class="fa fa-print"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" id="cetak">
+                    <div class="button-group mb-4">
+                        <button class="btn btn-primary" onclick="showTable('pendaftaran')">Riwayat Pendaftaran
+                            Pasien</button>
+                        <button class="btn btn-secondary" onclick="showTable('khitan')">Riwayat Pendaftaran Khitan</button>
+                    </div>
+
+                    <div class="table-responsive riwayat-table" id="pendaftaran" style="display: none;">
+                        <h5>Riwayat Pendaftaran Pasien</h5>
+                        <table id="example1" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Usia</th>
+                                    <th>Alamat</th>
+                                    <th>Nomer HP</th>
+                                    <th>Kategori</th>
+                                    <th>Rekam Medik</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($dataPriksa as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->tanggal_lahir }}</td>
+                                        <td>{{ $item->usia }} Th</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->nomer_hp }}</td>
+                                        <td>{{ $item->kategori }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <a href="{{ route('rekam_umum', $item->id) }}"
+                                                        class="btn btn-success mx-4">
+                                                        <i class="fas fa-clipboard"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
+                                                    href="edit-registration/">
+                                                    <i class="fa fa-pencil-alt"></i>
+                                                </a>
+                                                <a class="btn btn-danger shadow btn-xs sharp" data-bs-toggle="modal"
+                                                    data-bs-target=".delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <div class="modal fade delete" tabindex="-1" role="dialog"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Hapus Data</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <i class="fa fa-trash"></i><br>
+                                                                Anda yakin ingin menghapus data ini?<br>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger light"
+                                                                    data-bs-dismiss="modal">Batalkan</button>
+                                                                <form action="{{ route('delete-data', $item->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-danger shadow"
+                                                                        data-id="{{ $item->id }}">
+                                                                        Ya, Hapus Data!
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive riwayat-table" id="khitan" style="display: none;">
+                        <h5>Riwayat Pendaftaran Khitan</h5>
+                        <table id="example2" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal Daftar</th>
+                                    <th>Jam</th>
+                                    <th>Paket</th>
+                                    <th>Tempat</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($khitanss as $khitans)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $khitans->name }}</td>
+                                        <td>{{ $khitans->tanggal }}</td>
+                                        <td>{{ $khitans->jam }}</td>
+                                        <td>{{ $khitans->jenis_paket }}</td>
+                                        <td>{{ $khitans->tempat }}</td>
+                                        <td>{{ $khitans->alamat }}</td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
+                                                    href="edit-registration/">
+                                                    <i class="fa fa-pencil-alt"></i>
+                                                </a>
+                                                <a class="btn btn-danger shadow btn-xs sharp" data-bs-toggle="modal"
+                                                    data-bs-target=".delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <div class="modal fade delete" tabindex="-1" role="dialog"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Hapus Data</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <i class="fa fa-trash"></i><br>
+                                                                Anda yakin ingin menghapus data ini?<br>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger light"
+                                                                    data-bs-dismiss="modal">Batalkan</button>
+                                                                <form action="{{ route('delete-data', $khitans->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-danger shadow"
+                                                                        data-id="{{ $khitans->id }}">
+                                                                        Ya, Hapus Data!
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Pastikan Chart.js dimuat -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var patientLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
-            var patientData = [10, 20, 30, 40, 50, 60];
-
-            var khitanLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
-            var khitanData = [5, 15, 25, 35, 45, 55];
-
-            // Debugging: Output data to the console
-            console.log('Patient Labels:', patientLabels);
-            console.log('Patient Data:', patientData);
-            console.log('Khitan Labels:', khitanLabels);
-            console.log('Khitan Data:', khitanData);
-
-            var ctx1 = document.getElementById('patientChart').getContext('2d');
-            var patientChart = new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: patientLabels,
-                    datasets: [{
-                        label: 'Pendaftaran Pasien',
-                        data: patientData,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        fill: false
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            var ctx2 = document.getElementById('khitanChart').getContext('2d');
-            var khitanChart = new Chart(ctx2, {
-                type: 'line',
-                data: {
-                    labels: khitanLabels,
-                    datasets: [{
-                        label: 'Data Khitan',
-                        data: khitanData,
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        borderWidth: 2,
-                        fill: false
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
+        function showTable(tableId) {
+            // Hide all tables
+            var tables = document.getElementsByClassName('riwayat-table');
+            for (var i = 0; i < tables.length; i++) {
+                tables[i].style.display = 'none';
+            }
+            // Show the selected table
+            document.getElementById(tableId).style.display = 'block';
+        }
     </script>
-</div>
-
 @endsection

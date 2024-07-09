@@ -15,7 +15,11 @@ class AdminController extends Controller
     {
         $jmlpasien = Pendaftaran::count();
         $jmlkhitan = Khitan::count();
-        return view('pages.admin.index', compact('jmlpasien','jmlkhitan'));
+        $belumDiperiksa = Anamnese::where('gejala', 'belum diperiksa')
+            ->orWhere('diagnosa', 'belum diperiksa')
+            ->orWhere('terapi', 'belum diperiksa')
+            ->count();
+        return view('pages.admin.index', compact('jmlpasien', 'jmlkhitan', 'belumDiperiksa'));
     }
 
     public function data_pasien(Request $request)
@@ -87,6 +91,55 @@ class AdminController extends Controller
         // return response()->json($addPasien);
         return redirect('/admin/data-pasien');
     }
+
+    public function edit($id)
+    {
+        // Temukan data pasien berdasarkan ID
+        $pasien = Pendaftaran::find($id);
+
+        // Jika pasien tidak ditemukan, redirect dengan pesan error
+        if (!$pasien) {
+            return redirect('/admin/tambah-pasien')->with('error', 'Data not found.');
+        }
+
+        // Tampilkan halaman edit dengan data pasien
+        return view('pages.admin.edit', compact('pasien'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima dari request
+        $request->validate([
+            'jenis_pemeriksaan' => 'required',
+            'name' => 'required',
+            'tanggal_lahir' => 'required',
+            'usia' => 'required',
+            'keterangan' => 'required',
+            'jenis_kelamin' => 'required',
+            'nomer_hp' => 'required',
+            'alamat' => 'required',
+            'ketegori' => 'required',
+        ]);
+
+        // Debugging untuk memastikan data request
+        // dd($request->all());
+
+        // Temukan data pasien berdasarkan ID
+        $pasien = Pendaftaran::find($id);
+
+        // Jika pasien tidak ditemukan, redirect dengan pesan error
+        if (!$pasien) {
+            return redirect('/admin/data-pasien')->with('error', 'Data not found.');
+        }
+
+        // Update data pasien dengan data dari request
+        $pasien->update($request->all());
+
+        // Redirect dengan pesan sukses ke halaman yang diinginkan
+        return redirect('/admin/data-pasien')->with('success', 'Data updated successfully');
+    }
+
+
     public function hapuspendaftaran(Request $request)
     {
         Pendaftaran::where('id', $request->id)->delete();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anamnese;
 use App\Models\Khitan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
@@ -37,5 +38,13 @@ class RiwayatController extends Controller
             });
 
         return view('pages.riwayat.index', compact('patientData', 'khitanData'));
+    }
+    public function pasien_priksa(Request $request)
+    {
+        $dataPriksa = Pendaftaran::all();
+        $khitanss = Khitan::all();
+        // return response()->json($dataPriksa);
+
+        return view('pages.riwayat.index', compact('dataPriksa', 'khitanss'));
     }
 }

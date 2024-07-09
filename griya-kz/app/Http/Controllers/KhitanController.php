@@ -14,10 +14,12 @@ class KhitanController extends Controller
         $khitan = Khitan::orderBy('created_at', 'DESC')->get();
         return view('pages.khitan.index', compact('khitan'));
     }
+
     public function create()
     {
         return view('pages.khitan.tambah-khitan');
     }
+
     public function add(Request $request)
     {
         $request->validate([
@@ -34,10 +36,10 @@ class KhitanController extends Controller
             'jam.required' => 'Jam Wajib Di isi',
             'jenis_paket.required' => 'Jenis Paket Wajib Di isi',
             'tempat.required' => 'Tempat Wajib Di isi',
-            'alamat.required' => 'Alamat Wajib Di isi'
+            'alamat.required' => 'Alamat Wajib Di isi',
+            'status.required' => 'Status Wajib Di isi'
         ]);
 
-        // return response()->json($request->all());
         $addKhitan = Khitan::create([
             'name' => $request->name,
             'tanggal' => $request->tanggal,
@@ -50,12 +52,10 @@ class KhitanController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-        // return response()->json($request->all());
         if ($addKhitan) {
             Session::flash('success', 'Berhasil Menambahkan Data');
         }
 
-        // return response()->json($addKhitan);
         return redirect('/khitan');
     }
 
@@ -68,29 +68,36 @@ class KhitanController extends Controller
     public function detail(Request $request)
     {
         $detail = Khitan::find($request->id);
-
-        // return response()->json($detail);
         return view('pages.khitan.detail', compact('detail'));
     }
-
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $khitan = Khitan::find($request->id);
+        $khitan = Khitan::find($id);
+        if (!$khitan) {
+            return redirect('/khitan')->with('error', 'Data not found.');
+        }
         return view('pages.khitan.edit', compact('khitan'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $khitan = Khitan::where('id', $request->id)->first();
-        $khitan->name = $request->name;
-        $khitan->tanggal = $request->tanggal;
-        $khitan->jam = $request->jam;
-        $khitan->jenis_paket = $request->jenis_paket;
-        $khitan->tempat = $request->tempat;
-        $khitan->alamat = $request->alamat;
-        $khitan->status = $request->status;
-        $khitan->save();
-        // return response()->json($khitan);
+        $request->validate([
+            'name' => 'required',
+            'tanggal' => 'required',
+            'jam' => 'required',
+            'jenis_paket' => 'required',
+            'tempat' => 'required',
+            'alamat' => 'required',
+            'status' => 'required',
+        ]);
+
+        $khitan = Khitan::find($id);
+        if (!$khitan) {
+            return redirect('/khitan')->with('error', 'Data not found.');
+        }
+
+        $khitan->update($request->all());
+
         return redirect('/khitan')->with('success', 'Data updated successfully');
     }
 }

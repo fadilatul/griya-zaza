@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('title')
 Edit Data Khitan
 @endsection
@@ -32,7 +32,7 @@ Edit Data Khitan
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="personal-data-gender">Status</label>
                                                 <select class="form-control" name="status">
-                                                    @if($khitan->status == 'belum')
+                                                    @if ($khitan->status == 'belum')
                                                     <option selected>{{$khitan->status}}</option>
                                                     <option value="selesai">selesai</option>
                                                     @else
@@ -69,7 +69,7 @@ Edit Data Khitan
                                                 <label class="form-label" for="personal-data-gender">Jenis
                                                     Paket</label>
                                                 <select class="form-control wide" name="jenis_paket">
-                                                    @if($khitan->jenis_paket == 'paket1')
+                                                    @if ($khitan->jenis_paket == 'paket1')
                                                     <option selected>{{$khitan->jenis_paket}}</option>
                                                     <option value="paket2">Paket 2</option>
                                                     <option value="paket3">Paket 3</option>
@@ -98,7 +98,7 @@ Edit Data Khitan
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="personal-data-gender">Tempat</label>
                                                 <select class="form-control" name="tempat">
-                                                    @if($khitan->tempat == 'rumah')
+                                                    @if ($khitan->tempat == 'rumah')
                                                     <option selected>{{$khitan->tempat}}</option>
                                                     <option value="klinik">klinik</option>
                                                     @else
@@ -137,4 +137,67 @@ Edit Data Khitan
         </div>
     </div>
 </div>
+@endsection --}}
+@extends('layouts.app')
+@section('title', 'Edit Data Khitan')
+
+@section('content')
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit Data Khitan</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('update_khitan', ['id' => $khitan->id]) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        value="{{ $khitan->name }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" name="tanggal" id="tanggal" class="form-control"
+                                        value="{{ $khitan->tanggal }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jam">Jam</label>
+                                    <input type="time" name="jam" id="jam" class="form-control"
+                                        value="{{ $khitan->jam }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jenis_paket">Jenis Paket</label>
+                                    <input type="text" name="jenis_paket" id="jenis_paket" class="form-control"
+                                        value="{{ $khitan->jenis_paket }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tempat">Tempat</label>
+                                    <input type="text" name="tempat" id="tempat" class="form-control"
+                                        value="{{ $khitan->tempat }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" name="alamat" id="alamat" class="form-control"
+                                        value="{{ $khitan->alamat }}" required>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="status">Status</label>
+                                    <select name="status" id="status" class="form-control" required>
+                                        <option value="belum" {{ $khitan->status == 'belum' ? 'selected' : '' }}>Belum
+                                            Khitan</option>
+                                        <option value="selesai" {{ $khitan->status == 'selesai' ? 'selected' : '' }}>Selesai
+                                        </option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -18,16 +18,12 @@ class Pendaftaran extends Model
         'jenis_kelamin',
         'nomer_hp',
         'alamat',
-        'kategori',
-        'khitan_id'
+        'kategori'
+
     ];
 
     public function anamneseMedis()
     {
         return $this->hasMany(Anamnese::class);
-    }
-    public function khitan()
-    {
-        return $this->belongsTo(Khitan::class, 'khitan_id', 'id');
     }
 }
