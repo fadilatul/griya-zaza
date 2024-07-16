@@ -98,20 +98,18 @@ class RekamController extends Controller
     }
 
     //     // copy yaa
-    public function hapus($pasien_id)
+    public function hapusUmum($pasien_id)
     {
-        // dd('mkaka');
-        $hapusRekam = Pendaftaran::find($pasien_id);
-        // dd($hapusRekam);
+        $hapusRekam = Anamnese::findOrFail($pasien_id);
+        $hapusRekam->delete();
+        return back();
+    }
+
+
+    public function hapusgigi($pasien_id)
+    {
+        $hapusRekam = Anamnese::findOrFail($pasien_id);
         $hapusRekam->delete();
         return back();
     }
 }
-
-//     public function hapusgigi($pasien_id)
-//     {
-//         $hapusRekam = Pendaftaran::findOrFail($pasien_id);
-//         $hapusRekam->delete();
-//         return redirect()->route('data-priksa', $pasien_id);
-//     }
-// }

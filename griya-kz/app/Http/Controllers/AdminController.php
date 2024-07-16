@@ -19,7 +19,26 @@ class AdminController extends Controller
             ->orWhere('diagnosa', 'belum diperiksa')
             ->orWhere('terapi', 'belum diperiksa')
             ->count();
-        return view('pages.admin.index', compact('jmlpasien', 'jmlkhitan', 'belumDiperiksa'));
+        $patientData = $this->getWeeklyData(Pendaftaran::class);
+        $khitanData = $this->getWeeklyData(Khitan::class);
+        // dd($patientData);
+        return view('pages.admin.index', compact('jmlpasien', 'jmlkhitan', 'belumDiperiksa','patientData','khitanData'));
+    }
+    private function getWeeklyData($model)
+    {
+        $data = [];
+        $labels = [];
+        $now = now();
+
+        for ($i = 0; $i < 4; $i++) {
+            $startOfWeek = $now->copy()->subWeeks($i)->startOfWeek();
+            $endOfWeek = $now->copy()->subWeeks($i)->endOfWeek();
+            $count = $model::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+            $data[] = $count;
+            $labels[] = 'Week ' . ($i + 1);
+        }
+
+        return ['labels' => array_reverse($labels), 'data' => array_reverse($data)];
     }
 
     public function data_pasien(Request $request)

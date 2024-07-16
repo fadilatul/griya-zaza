@@ -120,7 +120,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 300 // Set maximum value for y-axis
+                        max: 100 // Set maximum value for y-axis
                     }
                 }
             }

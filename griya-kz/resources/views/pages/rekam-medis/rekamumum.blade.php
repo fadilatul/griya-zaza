@@ -115,7 +115,7 @@
                     @else
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Data Rekam Medik</h4>
+                                <h4 class="card-title">Data Rekam Mediks</h4>
 
                                 <!-- center modal -->
                                 <div>
@@ -163,7 +163,7 @@
                                                                     class="fa fa-pencil-alt"></i></a>
                                                             <a class="btn btn-danger shadow btn-xs sharp"><i
                                                                     class="fa fa-trash" data-bs-toggle="modal"
-                                                                    data-bs-target=".delete"></i></a>
+                                                                    data-bs-target=".delete" onclick="hapus({{$rekam->id}})"></i></a>
                                                             <div class="modal fade delete" tabindex="-1" role="dialog"
                                                                 aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
@@ -183,11 +183,15 @@
                                                                             <button type="button"
                                                                                 class="btn btn-danger light"
                                                                                 data-bs-dismiss="modal">Batalkan</button>
-                                                                            <a href="delete-registration">
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger shadow">
-                                                                                    Ya, Hapus Data!
-                                                                                </button></a>
+                                                                                <form id="hapus" method="POST">
+                                                                                    @csrf
+                                                                                    @method('post')
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger shadow"
+                                                                                        >
+                                                                                        Ya, Hapus Data!
+                                                                                    </button>
+                                                                                </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -206,4 +210,10 @@
             </div>
         </div>
         <!-- /.container-fluid -->
+        <script>
+            function hapus(id) {
+                $('#hapus').attr('action', "{{ url('rekam-umum/delete') }}" + "/" + id)
+
+            }
+        </script>
     @endsection

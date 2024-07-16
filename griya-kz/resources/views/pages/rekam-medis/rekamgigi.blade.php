@@ -72,9 +72,9 @@
                                                             <a class="btn btn-primary shadow btn-xs sharp me-1"
                                                                 title="Edit" href="edit-registration/"><i
                                                                     class="fa fa-pencil-alt"></i></a>
-                                                            <a class="btn btn-danger shadow btn-xs sharp"><i
+                                                            {{-- <a class="btn btn-danger shadow btn-xs sharp"><i
                                                                     class="fa fa-trash" data-bs-toggle="modal"
-                                                                    data-bs-target=".delete"></i></a>
+                                                                    data-bs-target=".delete"></i></a> --}}
                                                             <div class="modal fade delete" tabindex="-1" role="dialog"
                                                                 aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
@@ -115,7 +115,7 @@
                     @else
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Data Rekam Medik</h4>
+                                <h4 class="card-title">Data Rekam Mediks</h4>
 
                                 <!-- center modal -->
                                 <div>
@@ -163,7 +163,7 @@
                                                                     class="fa fa-pencil-alt"></i></a>
                                                             <a class="btn btn-danger shadow btn-xs sharp"><i
                                                                     class="fa fa-trash" data-bs-toggle="modal"
-                                                                    data-bs-target=".delete"></i></a>
+                                                                    data-bs-target=".delete" onclick="hapus({{$rekam->id}})"></i></a>
                                                             <div class="modal fade delete" tabindex="-1" role="dialog"
                                                                 aria-hidden="true">
                                                                 <div class="modal-dialog modal-sm">
@@ -183,14 +183,14 @@
                                                                             <button type="button"
                                                                                 class="btn btn-danger light"
                                                                                 data-bs-dismiss="modal">Batalkan</button>
-                                                                            {{-- <form id="hapush" method="POST">
+                                                                            <form id="hapus" method="POST">
                                                                                 @csrf
                                                                                 @method('post')
                                                                                 <button type="submit"
                                                                                     class="btn btn-danger shadow">
                                                                                     Ya, Hapus Data!
                                                                                 </button>
-                                                                            </form> --}}
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -208,12 +208,12 @@
                 </div>
             </div>
         </div>
-        {{--
+        
         <script>
-            function hapusgigi(id) {
-                $('#hapush').attr('action', "{{ url('rekam-medis/deletegigi') }}" + "/" + id)
+            function hapus(id) {
+                $('#hapus').attr('action', "{{ url('rekam-medis/deletegigi') }}" + "/" + id)
 
             }
         </script>
-        <!-- /.container-fluid --> --}}
+        <!-- /.container-fluid --> 
     @endsection

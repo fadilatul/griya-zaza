@@ -60,12 +60,13 @@ Route::post('/dokter/priksa/{id}', [DoktorController::class, 'hapus_periksa'])->
 Route::get('rekam-medis/{pasien_id}', [RekamController::class, 'rekam_medis'])->name('rekam_medis');
 Route::get('rekam-gigi/{pasien_id}', [RekamController::class, 'rekam_dokterGigi'])->name('rekam_gigi');
 Route::get('rekam-umum/{pasien_id}', [RekamController::class, 'rekam_dokterumum'])->name('rekam_umum');
+Route::post('rekam-umum/delete/{pasien_id}', [RekamController::class, 'hapusUmum'])->name('hapus_umum');
 Route::get('rekam-medis/{pasien_id}/tambah', [RekamController::class, 'tambah_rekam'])->name('tambah_rekam');
 Route::post('rekam-medis/{pasien_id}/add', [RekamController::class, 'add_rekam'])->name('add_rekam');
 Route::get('rekam-medis/{pasien_id}/edit', [RekamController::class, 'edit_rekam'])->name('edit_rekam');
 Route::post('rekam-medis/{pasien_id}/update-medis', [RekamController::class, 'update_rekam'])->name('update_rekam');
 Route::post('rekam-medis/delete/{pasien_id}', [RekamController::class, 'hapus'])->name('hapus');
-Route::post('rekam-medis/deletegigi/{pasien_id}', [RekamController::class, 'hapusgigi'])->name('hapuss1');
+Route::post('rekam-medis/deletegigi/{pasien_id}', [RekamController::class, 'hapusgigi'])->name('hapus_gigi');
 
 
 // *****************Exel download**********************************
