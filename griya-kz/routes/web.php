@@ -53,6 +53,8 @@ Route::post('/admin/delete/{id}', [AdminController::class, 'hapuspendaftaran'])-
 Route::get('/dokter', [DoktorController::class, 'index'])->name('dokter')->middleware('isLogin', 'DokterRole');
 Route::get('/dokter/priksa', [DoktorController::class, 'priksa_umum'])->name('data-priksa')->middleware('isLogin', 'DokterRole');
 Route::get('/dokter/gigi', [DoktorController::class, 'priksa_gigi'])->name('data-gigi');
+Route::post('/dokter/gigi/{id}', [DoktorController::class, 'hapus'])->name('delete-gigi');
+Route::post('/dokter/priksa/{id}', [DoktorController::class, 'hapus_periksa'])->name('delete-periksa');
 
 // *****************Rekam Medis**********************************
 Route::get('rekam-medis/{pasien_id}', [RekamController::class, 'rekam_medis'])->name('rekam_medis');
@@ -62,6 +64,8 @@ Route::get('rekam-medis/{pasien_id}/tambah', [RekamController::class, 'tambah_re
 Route::post('rekam-medis/{pasien_id}/add', [RekamController::class, 'add_rekam'])->name('add_rekam');
 Route::get('rekam-medis/{pasien_id}/edit', [RekamController::class, 'edit_rekam'])->name('edit_rekam');
 Route::post('rekam-medis/{pasien_id}/update-medis', [RekamController::class, 'update_rekam'])->name('update_rekam');
+Route::post('rekam-medis/delete/{pasien_id}', [RekamController::class, 'hapus'])->name('hapus');
+Route::post('rekam-medis/deletegigi/{pasien_id}', [RekamController::class, 'hapusgigi'])->name('hapuss1');
 
 
 // *****************Exel download**********************************
@@ -77,11 +81,13 @@ Route::get('khitan/{id}/detail', [KhitanController::class, 'detail'])->name('det
 Route::get('/khitan/edit/{id}', [KhitanController::class, 'edit'])->name('edit_khitan');
 Route::post('/khitan/update/{id}', [KhitanController::class, 'update'])->name('update_khitan');
 
-// Route::get('khitan/{id}/edit', [KhitanController::class, 'edit'])->name('edit_khitan');
-// Route::post('/update-khitan', [KhitanController::class, 'update'])->name('khitan_update');
-
 
 // *****************Riwayat**********************************
 Route::get('/riwayat', [RiwayatController::class, 'pasien_priksa'])->name('riwayat');
 // *****************Grafik**********************************
-Route::get('/admin/dashboard', [ChartController::class, 'index']);
+// routes/web.php
+// Route::get('/dashboard', [ChartController::class, 'index']);
+//crud dokter umummm
+Route::get('/patients/{id}/edit', [DoktorController::class, 'edit'])->name('patients.edit');
+Route::put('/patients/{id}', [DoktorController::class, 'update'])->name('patients.update');
+Route::delete('/patients/{id}', [DoktorController::class, 'destroy'])->name('patients.destroy');

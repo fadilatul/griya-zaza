@@ -31,7 +31,7 @@
                                     <th>Nama</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Usia</th>
-                                    <th>Alamat</th>
+                                    <th style="width: 134px">Alamat</th>
                                     <th>Nomer HP</th>
                                     <th>Kategori</th>
                                     <th>Rekam Medik</th>
@@ -106,7 +106,7 @@
 
                     <div class="table-responsive riwayat-table" id="khitan" style="display: none;">
                         <h5>Riwayat Pendaftaran Khitan</h5>
-                        <table id="example2" class="table table-striped table-hover">
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -115,7 +115,7 @@
                                     <th>Jam</th>
                                     <th>Paket</th>
                                     <th>Tempat</th>
-                                    <th>Alamat</th>
+                                    <th style="width: 134px">Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

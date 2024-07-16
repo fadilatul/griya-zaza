@@ -1,31 +1,46 @@
 <?php
-// app/Http/Controllers/ChartController.php
 
-namespace App\Http\Controllers;
+// namespace App\Http\Controllers;
 
-use App\Models\Pendaftaran;
-use App\Models\Khitan;
-use Illuminate\Http\Request;
+// use App\Models\Pendaftaran;
+// use App\Models\Khitan;
+// use Illuminate\Support\Facades\DB;
 
-class ChartController extends Controller
-{
-    public function index()
-    {
-        // Ambil data jumlah pendaftaran pasien per bulan
-        $patients = Pendaftaran::select('month', 'count')->orderBy('month')->get();
-        $patientLabels = $patients->pluck('month')->toArray();
-        $patientData = $patients->pluck('count')->toArray();
+// class ChartController extends Controller
+// {
+//     public function index()
+//     {
+//         $jmlpasien = Pendaftaran::count();
+//         $jmlkhitan = Khitan::count();
+//         $belumDiperiksa = Pendaftaran::where('status', 'belum diperiksa')->count();
 
-        // Ambil data jumlah pasien khitan per bulan
-        $khitanPatients = Khitan::select('month', 'count')->orderBy('month')->get();
-        $khitanLabels = $khitanPatients->pluck('month')->toArray();
-        $khitanData = $khitanPatients->pluck('count')->toArray();
+//         // Ambil data pasien pendaftaran dan khitan per minggu dalam satu bulan
+//         $patientData = $this->getWeeklyData(Pendaftaran::class);
+//         $khitanData = $this->getWeeklyData(Khitan::class);
 
-        return view('pages.admin.index', [
-            'patientLabels' => json_encode($patientLabels),
-            'patientData' => json_encode($patientData),
-            'khitanLabels' => json_encode($khitanLabels),
-            'khitanData' => json_encode($khitanData),
-        ]);
-    }
-}
+//         return view('index', compact('jmlpasien', 'jmlkhitan', 'belumDiperiksa', 'patientData', 'khitanData'));
+//     }
+
+//     private function getWeeklyData($model)
+//     {
+//         // Mengambil data pasien per minggu dalam satu bulan
+//         $data = $model::select(DB::raw('WEEK(created_at, 1) as week'), DB::raw('COUNT(*) as count'))
+//             ->groupBy('week')
+//             ->orderBy('week')
+//             ->get();
+
+//         $labels = ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'];
+//         $counts = array_fill(0, 4, 0);
+
+//         foreach ($data as $item) {
+//             if ($item->week <= 4) {
+//                 $counts[$item->week - 1] = $item->count;
+//             }
+//         }
+
+//         return [
+//             'labels' => $labels,
+//             'data' => $counts
+//         ];
+//     }
+// }

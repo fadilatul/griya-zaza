@@ -26,7 +26,7 @@ class RekamController extends Controller
         return view('pages.rekam-medis.rekammedis', compact('rekams', 'pasien_id', 'pasien'));
     }
 
-    public function rekam_dokterGigi(Request $request , $pasien_id)
+    public function rekam_dokterGigi(Request $request, $pasien_id)
     {
         // Ambil semua data anamnese berdasarkan pasien_id
         $rekamGigi = Anamnese::where('poli', 'gigi')->where('pasien_id', $pasien_id)->get();
@@ -96,4 +96,22 @@ class RekamController extends Controller
 
         return redirect()->route('rekam_medis', $pasien_id);
     }
+
+    //     // copy yaa
+    public function hapus($pasien_id)
+    {
+        // dd('mkaka');
+        $hapusRekam = Pendaftaran::find($pasien_id);
+        // dd($hapusRekam);
+        $hapusRekam->delete();
+        return back();
+    }
 }
+
+//     public function hapusgigi($pasien_id)
+//     {
+//         $hapusRekam = Pendaftaran::findOrFail($pasien_id);
+//         $hapusRekam->delete();
+//         return redirect()->route('data-priksa', $pasien_id);
+//     }
+// }

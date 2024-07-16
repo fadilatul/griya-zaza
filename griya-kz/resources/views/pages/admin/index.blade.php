@@ -88,13 +88,66 @@
                             <div class="chart-pie pb-2 pt-4">
                                 <canvas id="khitanChart" width="400" height="100"></canvas>
                             </div>
-                            <div class="small mt-4 text-center">
-                                <!-- Placeholder untuk Grafik -->
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Tambahkan script Chart.js di sini --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data for the charts
+        const patientData = @json($patientData);
+        const khitanData = @json($khitanData);
+
+        // Configuring the Patient Chart
+        const ctx1 = document.getElementById('patientChart').getContext('2d');
+        const patientChart = new Chart(ctx1, {
+            type: 'line', // or 'bar'
+            data: {
+                labels: patientData.labels, // ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4']
+                datasets: [{
+                    label: 'Jumlah Pasien',
+                    data: patientData.data, // [250, 300, 200, 350]
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 300 // Set maximum value for y-axis
+                    }
+                }
+            }
+        });
+
+        // Configuring the Khitan Chart
+        const ctx2 = document.getElementById('khitanChart').getContext('2d');
+        const khitanChart = new Chart(ctx2, {
+            type: 'line', // or 'bar'
+            data: {
+                labels: khitanData.labels, // ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4']
+                datasets: [{
+                    label: 'Jumlah Pasien Khitan',
+                    data: khitanData.data, // [100, 120, 110, 130]
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100 // Set maximum value for y-axis
+                    }
+                }
+            }
+        });
+    </script>
 @endsection

@@ -55,11 +55,11 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                            href="edit-registration/">
+                                                            href="{{ route('patients.edit', $item->id) }}">
                                                             <i class="fa fa-pencil-alt"></i>
                                                         </a>
                                                         <a class="btn btn-danger shadow btn-xs sharp" data-bs-toggle="modal"
-                                                            data-bs-target=".delete">
+                                                            data-bs-target=".delete" onclick="hapus({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                         <div class="modal fade delete" tabindex="-1" role="dialog"
@@ -78,9 +78,9 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-danger light"
                                                                             data-bs-dismiss="modal">Batalkan</button>
-                                                                        <form action="{{ route('delete-data', $item->id) }}"
-                                                                            method="POST">
+                                                                        <form id="hapus" method="POST">
                                                                             @csrf
+                                                                            @method('post')
                                                                             <button type="submit"
                                                                                 class="btn btn-danger shadow"
                                                                                 data-id="{{ $item->id }}">
@@ -108,21 +108,9 @@
 
 @push('prepend-script')
     <script>
-        $(document).on('click', '#btn-delete', function(e) {
-            e.preventDefault();
-            var link = $(this).attr('href');
+        function hapus(id) {
+            $('#hapus').attr('action', "{{ url('dokter/priksa') }}" + "/" + id)
 
-            Swal.fire({
-                title: 'Apakah Kamu Yakin Untuk Menghapus Data Tersebut?',
-                text: "Kamu tidak bisa mengembalikan data ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, Hapus itu!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = link;
-                }
-            })
-        });
+        }
     </script>
 @endpush

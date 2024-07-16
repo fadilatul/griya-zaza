@@ -183,11 +183,14 @@
                                                                             <button type="button"
                                                                                 class="btn btn-danger light"
                                                                                 data-bs-dismiss="modal">Batalkan</button>
-                                                                            <a href="delete-registration">
+                                                                            {{-- <form id="hapush" method="POST">
+                                                                                @csrf
+                                                                                @method('post')
                                                                                 <button type="submit"
                                                                                     class="btn btn-danger shadow">
                                                                                     Ya, Hapus Data!
-                                                                                </button></a>
+                                                                                </button>
+                                                                            </form> --}}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -205,5 +208,12 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
+        {{--
+        <script>
+            function hapusgigi(id) {
+                $('#hapush').attr('action', "{{ url('rekam-medis/deletegigi') }}" + "/" + id)
+
+            }
+        </script>
+        <!-- /.container-fluid --> --}}
     @endsection

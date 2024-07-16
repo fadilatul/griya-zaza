@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Anamnese;
 use App\Models\Pendaftaran;
-use App\Models\Khitan;
 use Illuminate\Http\Request;
 
 class DoktorController extends Controller
@@ -13,25 +10,73 @@ class DoktorController extends Controller
     public function index()
     {
         $jumpasien = Pendaftaran::count();
-        $jumkhit = Khitan::count();
-        return view('pages.dokter.index', compact('jumpasien','jumkhit'));
+        $jumkhit = Pendaftaran::where('jenis_pemeriksaan', 'khitan')->count();
+        return view('pages.dokter.index', compact('jumpasien', 'jumkhit'));
     }
-
-
 
     public function priksa_umum(Request $request)
     {
         $data_umum = Pendaftaran::where('jenis_pemeriksaan', 'periksa_umum')
-                                ->orderBy('created_at', 'DESC')
-                                ->get();
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return view('pages.dokter.data-priksa', compact('data_umum'));
     }
 
     public function priksa_gigi(Request $request)
     {
         $data_gigi = Pendaftaran::where('jenis_pemeriksaan', 'periksa_gigi')
-                                ->orderBy('created_at', 'DESC')
-                                ->get();
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return view('pages.dokter.data-gigi', compact('data_gigi'));
+    }
+
+    public function edit($id)
+    {
+        $patient = Pendaftaran::findOrFail($id);
+        return view('pages.dokter.edit-umum', compact('patient'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
+            'nomer_hp' => 'required|string|max:15',
+        ]);
+
+        $patient = Pendaftaran::findOrFail($id);
+        $patient->name = $request->input('name');
+        $patient->tanggal_lahir = $request->input('tanggal_lahir');
+        $patient->alamat = $request->input('alamat');
+        $patient->nomer_hp = $request->input('nomer_hp');
+        $patient->save();
+
+        return redirect()->route('data-priksa')->with('success', 'Data pasien berhasil diupdate');
+    }
+
+    public function destroy($id)
+    {
+        $patient = Pendaftaran::findOrFail($id);
+        $patient->delete();
+        return redirect()->route('data-priksa')->with('success', 'Pasien berhasil dihapus');
+    }
+    public function hapus($id)
+    {
+        $hapus = Pendaftaran::findOrFail($id);
+        $hapus->delete();
+        return back();
+        // $patient = Pendaftaran::findOrFail($id);
+        // $patient->delete();
+        // return redirect()->route('data-priksa')->with('success', 'Pasien berhasil dihapus');
+    }
+    public function hapus_periksa($id)
+    {
+        $hapus = Pendaftaran::findOrFail($id);
+        $hapus->delete();
+        return back();
+        // $patient = Pendaftaran::findOrFail($id);
+        // $patient->delete();
+        // return redirect()->route('data-priksa')->with('success', 'Pasien berhasil dihapus');
     }
 }

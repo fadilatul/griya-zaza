@@ -59,7 +59,7 @@
                                                             <i class="fa fa-pencil-alt"></i>
                                                         </a>
                                                         <a class="btn btn-danger shadow btn-xs sharp" data-bs-toggle="modal"
-                                                            data-bs-target=".delete">
+                                                            data-bs-target=".delete" onclick="hapus({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                         <div class="modal fade delete" tabindex="-1" role="dialog"
@@ -78,7 +78,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-danger light"
                                                                             data-bs-dismiss="modal">Batalkan</button>
-                                                                        <form action="{{ route('delete-data', $item->id) }}"
+                                                                        <form action="{{ route('delete-gigi', $item->id) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             <button type="submit"
@@ -108,6 +108,12 @@
 
 @push('prepend-script')
     <script>
+        function hapus(id) {
+            $('#hapus').attr('action', "{{ url('rekam-medis/delete') }}" + "/" + id)
+
+        }
+    </script>
+    {{-- <script>
         $(document).on('click', '#btn-delete', function(e) {
             e.preventDefault();
             var link = $(this).attr('href');
@@ -124,5 +130,5 @@
                 }
             })
         });
-    </script>
+    </script> --}}
 @endpush
